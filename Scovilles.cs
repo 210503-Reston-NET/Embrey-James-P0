@@ -1,5 +1,6 @@
 using System;
 
+namespace P0
 {
     class Scovilles
     {

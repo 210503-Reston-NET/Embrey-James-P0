@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace P0
 {
 
     class Program
