@@ -2,11 +2,11 @@
 
 namespace PPBL
 {
-    class Program
+    class PPStorage
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Enter the number of items you wish to purchase:");
         }
     }
 }

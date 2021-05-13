@@ -21,6 +21,12 @@ namespace Models
         {
 
         }
+
+        public Store(int id, string name, string city, string state) : this(name, city, state)
+        {
+            this.Id = id;
+        }
+        public int Id { get; set; }
         ///<summary>
         /// Hello, and welcome to Patrick's Peppers! We sell an assortment of Hot Sauces to spice up your life. 
         ///</summary>
@@ -44,12 +50,12 @@ namespace Models
         /// This contains the review of a particular restaurant
         /// </summary>
         /// <value></value>
-        public List<Review> Reviews { get; set; }
+        public List<Reviews> Reviews { get; set; }
         public override string ToString()
         {
             return $" Name: {Name} \n Location: {City}, {State}";
         }
-        public bool Equals(Restaurant restaurant)
+        public bool Equals(Store store)
         {
             return this.Name.Equals(restaurant.Name) && this.City.Equals(restaurant.City) && this.State.Equals(restaurant.State);
         }
