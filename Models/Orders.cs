@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Orders
+namespace Models
 {
     class Program
     {
