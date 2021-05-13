@@ -6,7 +6,7 @@ namespace Models
     {
         private int _rating;
         /// <summary>
-        /// Average rating of stores
+        /// Average rating of stores.
         /// </summary>
         /// <value></value>
         public int Rating
@@ -30,7 +30,12 @@ namespace Models
         /// Verbose description of store experience. 
         /// </summary>
         /// <value></value>
-        public string Description { get; set; }
+        public Reviews(string description) 
+        {
+            this.Description = description;
+
+        }
+                public string Description { get; set; }
 
         public override string ToString()
         {

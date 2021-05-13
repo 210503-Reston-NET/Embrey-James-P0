@@ -1,19 +1,32 @@
 using System;
+using System.Globalization;
+using System.Collections.Generic;
 
-namespace Locations
+namespace Models
 {
 
-    class Program
+    public class Location
     {
         /// <summary>
-        /// Places orders to store locations
+        /// Defines a store location
         /// </summary>
         /// <param name="args"></param>
+        public Location (string name, string address)
+        {
+            this.Name = name;
+            this.Address = address;
+        }
 
+        public string Name { get; set; } = "Patrick's Peppers";
+        public string Address { get; set; } = "123 Spicy Drive, Harrisburg, PA, 17015";
+
+        public override string ToString()
+        {
+            return $"Name: {this.Name} \nAddress: {this.Address}";
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter your store location here:");
-            Console.WriteLine("This is a store location!");
+            // Figuring out what to do with this thing. 
         }
     }
 }

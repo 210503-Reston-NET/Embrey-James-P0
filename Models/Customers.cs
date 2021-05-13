@@ -1,14 +1,27 @@
 using System;
+using System.Globalization;
+using System.Collections.Generic;
 
 
-namespace Customers
+namespace Models
 {
-    class AddCustomer
+    public class Customer
     {
         /// <summary>
-        /// Allows addition of new customers
+        /// Holds information for customers.
         /// </summary>
         /// <param name="args"></param>
+        public Customer (string name)
+        {
+            this.Name = name;
+        }
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name: {this.Name}";
+        }
+
 
         static void Main(string[] args)
         {
