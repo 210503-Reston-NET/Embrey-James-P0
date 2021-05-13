@@ -4,11 +4,11 @@ using Models;
 
 namespace PPUI
 {
-    class Program
+    class _ppui
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // User interface for Patrick's Peppers.
         }
     }
 }

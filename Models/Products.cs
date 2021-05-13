@@ -3,7 +3,7 @@
 namespace Models
 {
 
-    class Program
+    class Products
     {
         /// <summary>
         /// This displays the list of peppers to choose from (Mild, Medium, Hot)
@@ -12,7 +12,7 @@ namespace Models
 
         static void Main(string[] args)
         {
-             
+
             Console.WriteLine("Mild:");
             Console.WriteLine("Mango Twango  |  1,000 Scovilles  |  $9.00");
             Console.WriteLine("Hickory Dickory  |  1,200 Scovilles |  $9.00");
