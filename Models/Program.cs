@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collectionss.Generics;
-using Models;
 
-namespace PPUI
+namespace Models
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Business Models managed in subnamespaces
         }
     }
 }
