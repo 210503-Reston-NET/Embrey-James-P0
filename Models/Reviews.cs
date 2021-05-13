@@ -27,7 +27,7 @@ namespace Models
             }
         }
         /// <summary>
-        /// Verbose description of store experience.
+        /// Verbose description of store experience. 
         /// </summary>
         /// <value></value>
         public string Description { get; set; }
