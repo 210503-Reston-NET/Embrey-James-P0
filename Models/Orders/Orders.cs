@@ -6,7 +6,9 @@ namespace Orders
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Looking to update this with Order functionality
+            // Place orders here...
+            
         }
     }
 }
