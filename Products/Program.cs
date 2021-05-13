@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace Products
 {
 
-    class Peppers
+    class Program
     {
         /// <summary>
         /// This displays the list of peppers to choose from (Mild, Medium, Hot)
