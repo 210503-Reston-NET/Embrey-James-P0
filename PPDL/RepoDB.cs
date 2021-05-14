@@ -1,57 +1,65 @@
-using Microsoft.Win32;
-using System.IO;
-using System.Collections.Generic;
 using System;
-using Model;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
-namespace PPDL
+
+namespace PPModels
 {
-    public class RepoDB
+    public class Store
     {
         
-    }
+        private string _city;
+        public Store(string name, string city, string state)
+        {
+            this.Name = name;
+            this.City = city;
+            this.State = state;
+        }
+        public Store()
+        {
 
-    public Models.Reviews AddReview(Store store, Review review)
-    {
-        
-        found.Reviews.Add
-        (
-            new Entity.Review
+        }
+        // Constructor chaining
+        public Store(int id, string name, string city, string state) : this(name, city, state)
+        {
+            this.Id = id;
+        }
+        public int Id { get; set; }
+        /// <summary>
+        /// Describe the name of your store
+        /// </summary>
+        /// <value></value>
+        public string Name { get; set; }
+        /// <summary>
+        /// Describe the store location
+        /// </summary>
+        /// <value></value>
+        public string City
+        {
+            get { return _city; }
+            set
             {
-                Rating = review.Rating,
-                Description = review.Description,
-                StoreId = _context.Store.FirstOrDefault(storez => storez.Name == store.Name && storez => storez.City == store.City && storez = storez.State == store.State).Id
+                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$")) throw new Exception("City cannot have numbers!");
+                _city = value;
             }
-        );
-        _context.SaveChanges();
-        return review;
-    }
-
-    public Store DeleteStore(Store store)
-    {
-        Entity.Store toBeDeleted = _context.Store.First(storez => storez.Id == store.Id);
-        _context.Stores.Remove(toBeDeleted);
-        _context.SaveChanges();
-    }
-
-    public List<Review> GetReviews(Store store)
-    {
-        // We get the reviews such that, given the store that matches the store being passed,
-        // we get the id of that specific store, compare it to the FK references in the Reviews table
-        // get the reviews that match the condition
-        // transform the entity type review to a model type review
-        // Immediately execute the LING Query by calling tolist, which takes the data from the DB
-        // and puts it in a list.
-        Entity.Restaurant foundStorez = _context.Store.FirstOrDefault(
-                storez => storez.Name == store.Name && storez ,storez.City == store.City && storez = storez.State == store.State).Id;
-        return _context.Reviews.Where(
-            review => review.Restaurant.Id == GetStore(store).Id
-            ).Select(
-                review => new Model.Review
-                {
-                    Rating = review.Rating,
-                    Description = review.Description
-                }
-        ).ToList();
+        }
+        /// <summary>
+        /// This describes the location
+        /// </summary>
+        /// <value></value>
+        public string State { get; set; }
+        /// <summary>
+        /// This contains the review of a particular restaurant
+        /// </summary>
+        /// <value></value>
+        public List<Review> Reviews { get; set; }
+        public override string ToString()
+        {
+            return $" Name: {Name} \n Location: {City}, {State}";
+        }
+        public bool Equals(Store store)
+        {
+            return this.Name.Equals(store.Name) && this.City.Equals(store.City) && this.State.Equals(store.State);
+        }
     }
 }
