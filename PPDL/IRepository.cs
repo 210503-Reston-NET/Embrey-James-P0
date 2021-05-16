@@ -1,15 +1,13 @@
 using System.Collections.Generic;
 using PPModels;
+
 namespace PPDL
 {
     public interface IRepository
     {
-        List<Store> GetAllStore();
-        Store AddStore(Store store);
-        Store GetStore(Store store);
+        // List<Customer> GetAllCustomers();
+        // Customer AddCustomer(Customer customer);
 
-        Store DeleteStore(Store store);
-        Review AddStore(Store store, Review review);
-        List<Review> GetReviews(Store store);
+        // Customer GetCustomer(Customer customer);
     }
 }

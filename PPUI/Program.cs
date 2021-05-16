@@ -1,10 +1,12 @@
-﻿namespace RRUI
+using System;
+
+namespace PPUI
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            PepperPlant.GetMenu("main").Start();
+            Intro.GetMenu("HomeScreen").Start();
         }
     }
 }

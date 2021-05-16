@@ -2,9 +2,8 @@ using System;
 using System.Globalization;
 using System.Collections.Generic;
 
-namespace Models
+namespace PPModels
 {
-
     public class Location
     {
         /// <summary>
@@ -24,9 +23,9 @@ namespace Models
         {
             return $"Name: {this.Name} \nAddress: {this.Address}";
         }
-        static void Main(string[] args)
-        {
-            // Figuring out what to do with this thing. 
-        }
+        // static void Main(string[] args)
+        // {
+            
+        // }
     }
 }

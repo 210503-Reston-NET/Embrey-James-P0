@@ -1,14 +1,9 @@
 ﻿using System;
 
-namespace Models
+namespace PPModels
 {
-    class Program
+    public class Orders
     {
-        static void Main(string[] args)
-        {
-            //Looking to update this with Order functionality
-            // Place orders here...
-            
-        }
+        
     }
 }
