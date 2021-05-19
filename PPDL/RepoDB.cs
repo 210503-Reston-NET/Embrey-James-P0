@@ -23,7 +23,6 @@ namespace PPDL
                 new Entity.Customer{
                 CustomerName = customers.Name,
                 CustomerLocale = customers.Locale,
-                CustomerQuantity = customers.Quantity
                 }
             );
             _context.SaveChanges();
@@ -43,7 +42,7 @@ namespace PPDL
         {
             Entity.Customer found = _context.Customers.FirstOrDefault(custo => custo.CustomerName == customers.Name && custo.CustomerLocale == customers.Locale);
             if(found == null) return null;
-            return new Model.Customers(found.CustomerName, found.CustomerLocale, found.CustomerQuantity);
+            return new Model.Customers(found.CustomerName, found.CustomerLocale);
         }
 
         // public void UpdateProduct(Product product2BUpdated)

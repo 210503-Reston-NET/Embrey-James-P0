@@ -9,19 +9,11 @@ namespace PPModels
         // private string _locale;
 
 
-        
 
-        // public Customers()
-        // {
-
-        // }
-
-        public Customers(string name, string locale, int quantity)
+        public Customers(string name, string locale)
         {
             this.Name = name;
             this.Locale = locale;
-            this.Quantity = quantity;
-
         }
         
         public string Name { get; set; }

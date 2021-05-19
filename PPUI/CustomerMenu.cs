@@ -47,9 +47,8 @@ namespace PPUI
         {
                 string names = _verify.VerifyString("Please enter your name:");
                 string locales = _verify.VerifyString("Please enter your location:");
-                Customers Harambe = new Customers(names, locales, 0);
+                Customers Harambe = new Customers(names, locales);
                 Customers customerCreated = _customerBL.AddCustomer(Harambe);
-                Console.WriteLine("Hello " + names);
         }
 
     }

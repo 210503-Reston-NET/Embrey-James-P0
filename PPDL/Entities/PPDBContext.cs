@@ -25,6 +25,7 @@ namespace PPDL.Entities
         public virtual DbSet<Store> Stores { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -44,8 +45,6 @@ namespace PPDL.Entities
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("customerName");
-
-                entity.Property(e => e.CustomerQuantity).HasColumnName("customerQuantity");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -97,7 +96,7 @@ namespace PPDL.Entities
                 entity.HasOne(d => d.OrderNumberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderNumber)
-                    .HasConstraintName("FK__Orders__orderNum__44952D46");
+                    .HasConstraintName("FK__Orders__orderNum__50FB042B");
             });
 
             modelBuilder.Entity<Product>(entity =>

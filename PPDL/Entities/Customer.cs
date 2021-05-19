@@ -15,7 +15,6 @@ namespace PPDL.Entities
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string CustomerLocale { get; set; }
-        public int CustomerQuantity { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }
