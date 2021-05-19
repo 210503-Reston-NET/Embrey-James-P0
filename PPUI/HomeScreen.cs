@@ -15,8 +15,8 @@ namespace PPUI
             {
                 Console.WriteLine("Welcome to Patrick's Peppers Application! We sell an assortment of sauces to spice up your life!");
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("[0] View Sauces");
-                Console.WriteLine("[1] View Manager Menu");
+                Console.WriteLine("[0] View Products");
+                Console.WriteLine("[1] View as Manager");
                 Console.WriteLine("[2] Exit");
                 string input = Console.ReadLine();
                 switch (input)

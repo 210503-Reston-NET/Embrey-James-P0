@@ -14,12 +14,12 @@ namespace PPTests
 {
     public class RepoTest
     {
-        private readonly DBContextOptions<Entity.StoreDBContext> options;
+        private readonly DBContextOptions<Entity.PPDBContext> options;
         //XUnit creates new instances of test classes, you need to make sure that you seed your db for each class
 
         public RepoTest()
         {
-            options = new DBContextOptionsBuilder<Entity.StoreDBContext>()
+            options = new DBContextOptionsBuilder<Entity.PPDBContext>()
             .UseSqlite("Filename=Test.db").Seed();
 
         }
@@ -68,55 +68,28 @@ namespace PPTests
         private void Seed()
         {
             //this is an example of a using block
-            using (var context = new EntityHandling.StoreDBContext(options))
+            using (var context = new EntityHandling.PPDBContext(options))
             {
                 //Makes sure state of DB gets recreated everytime to maintain modularity of tests
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-                context.Stores.AddRange();
+                context.Location.AddRange();
                 
-                    new Entity.Store
+                    new Entity.Location
                     {
                         Id = 1,
                         Name  = "Patricks Peppers PA",
                         City = "Harrisburg",
-                        State = "Pennsylvania",
-                        Reviews = new List<Entity.Review>()
-                        {
-                            new Entity.Review
-                            {
-                                Id = 1, 
-                            Rating = 5, 
-                            Description = "This was spicy!"
-                            },
-                            new Entity.Review
-                            {
-                                Id = 2,
-                                Rating = 5,
-                                Description = "Pretty cool"
-                            }
-                        }
+                        State = "Pennsylvania"
                     };
-                    new Entity.Store
+                    new Entity.Location
                     {
                         Id = 2,
                         Name  = "Patricks Peppers NY",
                         City = "New York",
                         State = "New York",
-                        Reviews = new List<Entity.Reviews>()
                         {
-                            new Entity.Review
-                            {
-                                Id = 1, 
-                            Rating = 5, 
-                            Description = "This was spicy!"
-                            },
-                            new Entity.Review
-                            {
-                                Id = 2,
-                                Rating = 5,
-                                Description = "Pretty cool"
-                            }
+                            
                         }
                     };
             }

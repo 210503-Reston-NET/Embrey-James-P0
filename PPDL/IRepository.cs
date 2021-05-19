@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using PPModels;
+using Entity = PPDL.Entities;
+
 
 namespace PPDL
 {
     public interface IRepository
     {
         // List<Customer> GetAllCustomers();
-        // Customer AddCustomer(Customer customer);
+        Customers AddCustomer(Customers customers);
+        Customers GetCustomer(Customers customers);
 
-        // Customer GetCustomer(Customer customer);
+
     }
 }

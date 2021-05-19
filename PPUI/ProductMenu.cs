@@ -18,7 +18,7 @@ public class ProductMenu : IMenu
                 Console.WriteLine("[1] Purchase Hickory Dickory (Mild)");
                 Console.WriteLine("[2] Purchase Hollapeno (Medium)");
                 Console.WriteLine("[3] Purchase Heat Wave (Medium");
-                Console.WriteLine("[4] Purchase Scorpion's Sting (Hot)");
+                Console.WriteLine("[4] Purchase Scorpion Sting (Hot)");
                 Console.WriteLine("[5] Purchase Pepper Plague (Hot)");
                 Console.WriteLine("[6] Exit");
                 string input = Console.ReadLine();
@@ -26,19 +26,29 @@ public class ProductMenu : IMenu
                 {
                     case "0":
                         Console.WriteLine("Purchased!");
-                        submenu.Start();
                         break;
                     case "1":
                         Console.WriteLine("Purchased!");
-                        submenu.Start();
                         break;
                     case "2":
                         Console.WriteLine("Purchased!");
-                        submenu.Start();
+                        break;
+                    case "3":
+                        Console.WriteLine("Purchased!");
+                        break;
+                    case "4":
+                        Console.WriteLine("Purchased!");
+                        break;
+                    case "5":
+                        Console.WriteLine("Purchased!");
+                        break;
+                    case "6":
+                        Console.WriteLine("Have a nice day!");
+                        repeat = false;
                         break;
                     default:
                         Console.WriteLine("Please enter a valid option");
-                        repeat = false;
+                        submenu.Start();
                         break;
                 }
             } while (repeat);

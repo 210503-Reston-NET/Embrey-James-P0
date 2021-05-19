@@ -1,31 +1,29 @@
 using System;
-using System.Globalization;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace PPModels
 {
     public class Location
     {
-        /// <summary>
-        /// Defines a store location
-        /// </summary>
-        /// <param name="args"></param>
-        public Location (string name, string address)
+        public Location (string name, string city, string state)
         {
             this.Name = name;
-            this.Address = address;
+            this.City = city;
+            this.State = state;
         }
 
-        public string Name { get; set; } = "Patrick's Peppers";
-        public string Address { get; set; } = "123 Spicy Drive, Harrisburg, PA, 17015";
+        public string Name { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
         public override string ToString()
         {
-            return $"Name: {this.Name} \nAddress: {this.Address}";
+            return $"Name: {this.Name} \nCity: {this.City} \nState: {this.State}" ;
         }
         // static void Main(string[] args)
         // {
-            
+                
         // }
     }
 }

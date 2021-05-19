@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PPDL\PPDL.csproj" />
     <ProjectReference Include="..\PPBL\PPBL.csproj" />
+    <ProjectReference Include="..\PPModels\PPModels.csproj" />
   </ItemGroup>
 
 </Project>

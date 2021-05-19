@@ -1,9 +1,10 @@
 using System;
 using PPDL;
 using PPBL;
+
 namespace PPUI
 {
-    public class ManagerMenu : IMenu
+    public class InventoryMenu : IMenu
     {
         private IMenu submenu;
         public void Start()
@@ -11,22 +12,18 @@ namespace PPUI
             bool repeat = true;
             do
             {
-                Console.WriteLine("Welcome back Manager! What would you like to do?");
-                Console.WriteLine("[0] View Inventory");
-                Console.WriteLine("[1] View Customers");
-                Console.WriteLine("[2] Exit");
+                Console.WriteLine("Welcome to the Inventory! What would you like to do?");
+                Console.WriteLine("[0] Replenish Inventory");
+                Console.WriteLine("[1] Exit");
                 string input = Console.ReadLine();
                 switch (input)
                 {
                     case "0":
-                        submenu = Intro.GetMenu("InventoryMenu");
-                        submenu.Start();
+                        Console.WriteLine("Inventory Replenished");
+                        repeat = false;
                         break;
                     case "1":
-                        submenu = Intro.GetMenu("CustomerMenu");
-                        submenu.Start();
-                        break;
-                    case "2":
+                        Console.WriteLine("Have a nice day!");
                         repeat = false;
                         break;
                     default:

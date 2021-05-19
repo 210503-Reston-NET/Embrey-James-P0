@@ -5,14 +5,20 @@ namespace PPModels
 
     class Products
     {
-        /// <summary>
-        /// This displays the list of peppers to choose from (Mild, Medium, Hot)
-        /// </summary>
-        /// <param name="args"></param>
+        public Products (string name)
+        {
+            this.Name = name;
+        }
 
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name: {this.Name}";
+        }
         // static void Main(string[] args)
         // {
-            
+                
         // }
     }
 }

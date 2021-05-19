@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PPBL\PPBL.csproj" />
+    
     <ProjectReference Include="..\PPModels\PPModels.csproj" />
     
   </ItemGroup>
