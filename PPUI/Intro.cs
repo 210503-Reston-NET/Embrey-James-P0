@@ -37,7 +37,7 @@ namespace PPUI
                 case "customermenu":
                     return new CustomerMenu(new CustomerBL(new RepoDB(context)), new VerificationService());
                 case "productmenu":
-                    return new ProductMenu();
+                    return new ProductMenu(new OrderBL(new RepoDB(context)), new VerificationService());
                 case "managermenu":
                     return new ManagerMenu();
                 case "inventorymenu":

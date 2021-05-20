@@ -18,13 +18,21 @@ namespace PPDL.Entities
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<LineItem> LineItems { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:patricks-peppers-net.database.windows.net,1433;Initial Catalog=PPDB;Persist Security Info=False;User ID=dbadmin;Password=Mbreonix@88;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +53,29 @@ namespace PPDL.Entities
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("customerName");
+            });
+
+            modelBuilder.Entity<LineItem>(entity =>
+            {
+                entity.Property(e => e.LineItemId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("lineItemID");
+
+                entity.Property(e => e.LineOrderId).HasColumnName("lineOrderID");
+
+                entity.Property(e => e.LineProductId).HasColumnName("lineProductID");
+
+                entity.Property(e => e.LineQuantityId).HasColumnName("lineQuantityID");
+
+                entity.HasOne(d => d.LineOrder)
+                    .WithMany(p => p.LineItems)
+                    .HasForeignKey(d => d.LineOrderId)
+                    .HasConstraintName("FK__LineItems__lineO__59904A2C");
+
+                entity.HasOne(d => d.LineProduct)
+                    .WithMany(p => p.LineItems)
+                    .HasForeignKey(d => d.LineProductId)
+                    .HasConstraintName("FK__LineItems__lineP__589C25F3");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -93,10 +124,12 @@ namespace PPDL.Entities
 
                 entity.Property(e => e.OrderQuantity).HasColumnName("orderQuantity");
 
+                entity.Property(e => e.OrderTotal).HasColumnName("orderTotal");
+
                 entity.HasOne(d => d.OrderNumberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderNumber)
-                    .HasConstraintName("FK__Orders__orderNum__50FB042B");
+                    .HasConstraintName("FK__Orders__orderNum__55BFB948");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -107,6 +140,8 @@ namespace PPDL.Entities
                     .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("productName");
+
+                entity.Property(e => e.ProductPrice).HasColumnName("productPrice");
 
                 entity.Property(e => e.ProductQuantity).HasColumnName("productQuantity");
             });

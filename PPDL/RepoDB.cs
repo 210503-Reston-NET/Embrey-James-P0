@@ -28,6 +28,7 @@ namespace PPDL
             _context.SaveChanges();
             return customers;
         }
+        
 
         // public List<Model.Customers> GetAllCustomers()
         // {
@@ -44,6 +45,13 @@ namespace PPDL
             if(found == null) return null;
             return new Model.Customers(found.CustomerName, found.CustomerLocale);
         }
+
+        // public Model.Products GetProducts(Model.Products products)
+        // {
+        //     Entity.Product found = _context.Products.FirstOrDefault(prod => prod.ProductId == products.ProductId);
+        //     if(found == null) return null;
+        //     return new Model.Products(found.ProductId, found.ProductName, found.ProductQuantity, found.ProductPrice);
+        // }
 
         // public void UpdateProduct(Product product2BUpdated)
         // {
@@ -63,6 +71,53 @@ namespace PPDL
         //     _context.ChangeTracker.Clear();
         // }
     // }
+
+        public Model.Orders AddOrder(Model.Orders orders)
+            {
+                _context.Orders.Add(
+                new Entity.Order{
+                OrderId = orders.OrderId,
+                OrderQuantity = orders.OrderQuantity,
+                OrderNumber= orders.OrderNumber,
+                OrderTotal = orders.OrderTotal,
+                }
+            );
+            _context.SaveChanges();
+            return orders;
+        }
+
+        public Model.Orders GetOrders(Model.Orders orders)
+        {
+            Entity.Order found = _context.Orders.FirstOrDefault(ord => ord.OrderId == orders.OrderId);
+            if(found == null) return null;
+            return new Model.Orders(found.OrderId, found.OrderQuantity, found.OrderNumber, found.OrderTotal);
+        }
+
+        public void UpdateOrder(Model.Orders order2BeUpdated)
+        {
+
+            Entity.Order oldOrder = _context.Orders.Find(order2BeUpdated.OrderId);
+
+            _context.Entry(oldOrder).CurrentValues.SetValues(order2BeUpdated);
+
+
+            Entity.Order oldOrder1 = _context.Orders.Find(order2BeUpdated.OrderId);
+
+
+            oldOrder1.OrderQuantity = order2BeUpdated.OrderQuantity;
+
+            oldOrder1.OrderTotal = order2BeUpdated.OrderTotal;
+
+            _context.Entry(oldOrder).CurrentValues.SetValues((order2BeUpdated));
+
+
+            _context.SaveChanges();
+
+            // _context.ChangeTracker.Clear();
+
+        }
+
+
     // {
     //     private Entity.PPDBContext _context;
 
@@ -143,9 +198,11 @@ namespace PPDL
     // // //             ).ToList();
     // // //     }
 
+                
+
     //         public Orders GetOrders(Orders orders)
     //         {
     //             Entity.Order;
     //         }
-        }
+    }
 }
