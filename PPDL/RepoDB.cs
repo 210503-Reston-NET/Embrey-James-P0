@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Model = PPModels;
 using Entity = PPDL.Entities;
@@ -46,6 +47,23 @@ namespace PPDL
             return new Model.Customers(found.CustomerName, found.CustomerLocale);
         }
 
+        public int GetCustomer1(Model.Customers customers)
+        {
+            Entity.Customer found = _context.Customers.FirstOrDefault(custo => custo.CustomerName == customers.Name && custo.CustomerLocale == customers.Locale);
+            if(found == null)
+            {
+                Console.WriteLine("Could not find customer");
+            };
+            return found.CustomerId;
+        }
+
+        public bool GetCustomer2(Model.Customers customers)
+        {
+            Entity.Customer found = _context.Customers.FirstOrDefault(custo => custo.CustomerName == customers.Name && custo.CustomerLocale == customers.Locale);
+            if(found == null) return false;
+            return true;
+        }
+
         // public Model.Products GetProducts(Model.Products products)
         // {
         //     Entity.Product found = _context.Products.FirstOrDefault(prod => prod.ProductId == products.ProductId);
@@ -80,6 +98,7 @@ namespace PPDL
                 OrderQuantity = orders.OrderQuantity,
                 OrderNumber= orders.OrderNumber,
                 OrderTotal = orders.OrderTotal,
+                OrderLocation = orders.OrderLocation,
                 }
             );
             _context.SaveChanges();
@@ -90,7 +109,7 @@ namespace PPDL
         {
             Entity.Order found = _context.Orders.FirstOrDefault(ord => ord.OrderId == orders.OrderId);
             if(found == null) return null;
-            return new Model.Orders(found.OrderId, found.OrderQuantity, found.OrderNumber, found.OrderTotal);
+            return new Model.Orders(found.OrderId, found.OrderQuantity, found.OrderNumber, found.OrderTotal, found.OrderLocation);
         }
 
         public void UpdateOrder(Model.Orders order2BeUpdated)
@@ -115,6 +134,13 @@ namespace PPDL
 
             // _context.ChangeTracker.Clear();
 
+        }
+
+        public string GetOrdersL(Model.Orders orders)
+        {
+            Entity.Order found = _context.Orders.FirstOrDefault(ord => ord.OrderId == orders.OrderId);
+            if(found == null);
+            return found.OrderLocation;
         }
 
 

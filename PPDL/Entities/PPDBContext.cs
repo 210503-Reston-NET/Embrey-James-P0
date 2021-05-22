@@ -23,16 +23,7 @@ namespace PPDL.Entities
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=tcp:patricks-peppers-net.database.windows.net,1433;Initial Catalog=PPDB;Persist Security Info=False;User ID=dbadmin;Password=Mbreonix@88;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -70,12 +61,12 @@ namespace PPDL.Entities
                 entity.HasOne(d => d.LineOrder)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.LineOrderId)
-                    .HasConstraintName("FK__LineItems__lineO__59904A2C");
+                    .HasConstraintName("FK__LineItems__lineO__76EBA2E9");
 
                 entity.HasOne(d => d.LineProduct)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.LineProductId)
-                    .HasConstraintName("FK__LineItems__lineP__589C25F3");
+                    .HasConstraintName("FK__LineItems__lineP__75F77EB0");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -120,6 +111,11 @@ namespace PPDL.Entities
                     .ValueGeneratedNever()
                     .HasColumnName("orderID");
 
+                entity.Property(e => e.OrderLocation)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("orderLocation");
+
                 entity.Property(e => e.OrderNumber).HasColumnName("orderNumber");
 
                 entity.Property(e => e.OrderQuantity).HasColumnName("orderQuantity");
@@ -129,7 +125,7 @@ namespace PPDL.Entities
                 entity.HasOne(d => d.OrderNumberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderNumber)
-                    .HasConstraintName("FK__Orders__orderNum__55BFB948");
+                    .HasConstraintName("FK__Orders__orderNum__731B1205");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -144,21 +140,6 @@ namespace PPDL.Entities
                 entity.Property(e => e.ProductPrice).HasColumnName("productPrice");
 
                 entity.Property(e => e.ProductQuantity).HasColumnName("productQuantity");
-            });
-
-            modelBuilder.Entity<Store>(entity =>
-            {
-                entity.Property(e => e.StoreId).HasColumnName("storeID");
-
-                entity.Property(e => e.StoreLocation)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("storeLocation");
-
-                entity.Property(e => e.StoreName)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("storeName");
             });
 
             OnModelCreatingPartial(modelBuilder);

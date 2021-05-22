@@ -1,7 +1,10 @@
-namespace PPTests
+namespace PPDL
 {
     public class Program
     {
-        int i = 0;
+        static void Main(string[] args)
+        {
+            int i = 0;
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace PPUI
                 switch (input)
                 {
                     case "0":
-                    AddCustomer();
+                    // AddCustomer();
                         Console.WriteLine("Customer added!");
                         break;
                     case "1":
@@ -43,13 +43,13 @@ namespace PPUI
             } while (repeat);
         }
 
-        public void AddCustomer()
-        {
-                string names = _verify.VerifyString("Please enter your name:");
-                string locales = _verify.VerifyString("Please enter your location:");
-                Customers Harambe = new Customers(names, locales);
-                Customers customerCreated = _customerBL.AddCustomer(Harambe);
-        }
+        // public void AddCustomer()
+        // {
+        //         string names = _verify.VerifyString("Please enter your name:");
+        //         string locales = _verify.VerifyString("Please enter your location:");
+        //         Customers Harambe = new Customers(names, locales);
+        //         Customers customerCreated = _customerBL.AddCustomer(Harambe);
+        // }
 
     }
 }

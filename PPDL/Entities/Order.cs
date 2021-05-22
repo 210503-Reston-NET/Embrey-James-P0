@@ -16,6 +16,7 @@ namespace PPDL.Entities
         public int OrderQuantity { get; set; }
         public int OrderNumber { get; set; }
         public double OrderTotal { get; set; }
+        public string OrderLocation { get; set; }
 
         public virtual Customer OrderNumberNavigation { get; set; }
         public virtual ICollection<LineItem> LineItems { get; set; }

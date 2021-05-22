@@ -8,8 +8,6 @@ namespace PPModels
     {
         // private string _locale;
 
-
-
         public Customers(string name, string locale)
         {
             this.Name = name;

@@ -29,5 +29,14 @@ namespace PPBL
     {
         return _repo.GetCustomer(customers);
     }
+    public int GetCustomer1(Customers customers)
+    {
+        return _repo.GetCustomer1(customers);
+    }
+
+    public bool GetCustomer2(Customers customers)
+    {
+        return _repo.GetCustomer2(customers);
+    }
 }
 }

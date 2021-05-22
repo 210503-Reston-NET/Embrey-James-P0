@@ -15,6 +15,11 @@ namespace PPDL
         Orders GetOrders(Orders orders);
 
         void UpdateOrder(Orders order2BeUpdated);
+        int GetCustomer1(Customers customers);
+
+        bool GetCustomer2(Customers customers);
+
+        string GetOrdersL(Orders orders);
 
     }
 }
