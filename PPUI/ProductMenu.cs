@@ -67,15 +67,7 @@ public class ProductMenu : IMenu
                 {
                     Console.WriteLine(product.ToString());
                 };
-                int code = this.VerifyInt("Please select a sauce to purchase");
-                // Console.WriteLine("What sauce would you like to purchase?");
-                // Console.WriteLine("[0] Purchase Mango Twango (Mild) $9.00");
-                // Console.WriteLine("[1] Purchase Hickory Dickory (Mild) $9.00");
-                // Console.WriteLine("[2] Purchase Hollapeno (Medium) $10.00");
-                // Console.WriteLine("[3] Purchase Heat Wave (Medium $10.00");
-                // Console.WriteLine("[4] Purchase Scorpion Sting (Hot) $12.00");
-                // Console.WriteLine("[5] Purchase Pepper Plague (Hot) $12.00");
-                // Console.WriteLine("[6] Exit");
+                
                 string input = Console.ReadLine();
                 
                 switch (input)
@@ -157,19 +149,19 @@ public class ProductMenu : IMenu
                 List<Products>products = _productBL.GetAllProducts();
                 foreach (Products product in products)
                 {
-                    Console.WriteLine(product.ToString());
+                    // Console.WriteLine(product.ToString());
                 };
                 try{
-                    response = Int32.Parse(Console.ReadLine());
-                    if (response > -1)
-                    {
-                        repeat = false;
-                    }
+                    // response = Int32.Parse(Console.ReadLine());
+                    // if (response > -1)
+                    // {
+                    //     repeat = false;
+                    // }
 
-                    else
-                    {
-                        Console.WriteLine("Must a non-negative input");
-                    }
+                    // else
+                    // {
+                    //     Console.WriteLine("Must be a non-negative input");
+                    // }
                 }
                 catch(Exception)
                 {
@@ -178,7 +170,7 @@ public class ProductMenu : IMenu
                 } while (repeat);
                 return response;
         }
-    
+
 
         public int AddCustomer()
         {

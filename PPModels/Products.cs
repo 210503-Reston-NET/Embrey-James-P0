@@ -30,6 +30,10 @@ namespace PPModels
         public override string ToString()
         {
             return $"Name: {this.ProductName}" + " " + $"Name : {this.ProductPrice}";
+            // string[] list = ProductName;
+
+            // IEnumerable<string> query = from Products in List
+            // orderby list.Length, list();
         }
         // static void Main(string[] args)
         // {

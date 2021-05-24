@@ -21,9 +21,6 @@ namespace PPModels
         {
             return $"Name: {this.Name} \nCity: {this.City} \nState: {this.State}" ;
         }
-        // static void Main(string[] args)
-        // {
-                
-        // }
+        
     }
 }
