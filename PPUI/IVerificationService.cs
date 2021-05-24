@@ -8,5 +8,6 @@ namespace PPUI
         /// <param name="prompt"></param>
         /// <returns></returns>
         string VerifyString(string prompt);
+        int VerifyInt(string prompt);
     }
 }

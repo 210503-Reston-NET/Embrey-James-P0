@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace PPModels
 {
 
-    class Products
+    public class Products
     {
         public Products (int productId, string productName, int productQuantity, double productPrice)
         {
@@ -14,6 +16,12 @@ namespace PPModels
 
         }
 
+        public Products (string productName, double productPrice)
+        {
+            this.ProductName = productName;
+            this.ProductPrice = productPrice;
+        }
+
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public int ProductQuantity { get; set; }
@@ -21,7 +29,7 @@ namespace PPModels
 
         public override string ToString()
         {
-            return $"Name: {this.ProductName}";
+            return $"Name: {this.ProductName}" + " " + $"Name : {this.ProductPrice}";
         }
         // static void Main(string[] args)
         // {

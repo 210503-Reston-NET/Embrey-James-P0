@@ -1,0 +1,4 @@
+2021-05-23 20:15:03.560 -04:00 [INF] New customer created!
+2021-05-23 20:19:01.685 -04:00 [INF] New customer created!
+2021-05-23 21:06:22.482 -04:00 [INF] New customer created!
+2021-05-23 22:06:07.615 -04:00 [INF] New customer created!

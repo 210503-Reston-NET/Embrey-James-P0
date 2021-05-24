@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace PPDL.Entities
+namespace PPUI.Entities
 {
     public partial class PPDBContext : DbContext
     {
@@ -90,11 +90,6 @@ namespace PPDL.Entities
 
                 entity.Property(e => e.LineQuantityId).HasColumnName("lineQuantityID");
 
-                entity.HasOne(d => d.LineOrder)
-                    .WithMany(p => p.LineItems)
-                    .HasForeignKey(d => d.LineOrderId)
-                    .HasConstraintName("FK__LineItems__lineO__3E3D3572");
-
                 entity.HasOne(d => d.LineProduct)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.LineProductId)
@@ -157,11 +152,6 @@ namespace PPDL.Entities
                 entity.Property(e => e.OrderQuantity).HasColumnName("orderQuantity");
 
                 entity.Property(e => e.OrderTotal).HasColumnName("orderTotal");
-
-                entity.HasOne(d => d.OrderNumberNavigation)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.OrderNumber)
-                    .HasConstraintName("FK__Orders__orderNum__3A6CA48E");
             });
 
             modelBuilder.Entity<Product>(entity =>

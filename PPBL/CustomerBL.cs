@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic; 
 using PPDL;
 using PPModels;
+// using Serilog;
 
 namespace PPBL
 {
@@ -16,11 +17,13 @@ namespace PPBL
         _repo = repo;
     }
 
+
+
     public Customers AddCustomer(Customers customers)
     {
         if(_repo.GetCustomer(customers)!=null)
         {
-            throw new Exception ("Customer already exists!");
+            throw (new Exception ("Customer already exists!"));
         }
         return _repo.AddCustomer(customers);
     }

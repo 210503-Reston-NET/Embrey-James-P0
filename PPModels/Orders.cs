@@ -13,9 +13,11 @@ namespace PPModels
             this.OrderNumber = orderNumber;
             this.OrderTotal = orderTotal;
             this.OrderLocation = orderLocation;
+            
         }
 
         public int OrderId { get; set; }
+        
         public int OrderQuantity { get; set; } = 1;
 
         public int OrderNumber { get; set; }
@@ -23,6 +25,8 @@ namespace PPModels
         public double OrderTotal {get; set; }
 
         public string OrderLocation {get; set; }
+
+        // public DateTime OrderDate {get; set; }
 
         public override string ToString()
         {

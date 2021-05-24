@@ -1,6 +1,7 @@
 using System;
 using PPDL;
 using PPBL;
+
 namespace PPUI
 {
     public class ManagerMenu : IMenu
@@ -19,6 +20,7 @@ namespace PPUI
                 switch (input)
                 {
                     case "0":
+                    // int prods = FindProduct();
                         submenu = Intro.GetMenu("InventoryMenu");
                         submenu.Start();
                         break;
@@ -35,5 +37,16 @@ namespace PPUI
                 }
             } while (repeat);
         }
+
+        // public LocateProduct()
+        // {
+        //     int productNum;
+        //     bol repeats = true;
+        //     do
+        //     {
+        //         productNum = _validate.ValidateInt("What is the product Number? Please use 1-15");
+        //         repeats = !(_productBL.GetProduct(productNum);
+        //     }
+        // }
     }
 }

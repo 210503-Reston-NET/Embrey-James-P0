@@ -1,14 +1,14 @@
-// using PPModels;
-// using System.Collections.Generic;
+using PPModels;
+using System.Collections.Generic;
 
 namespace PPBL
     {
       public interface IProductBL
         {
-//         List<Products> GetAllProducts();
+        // List<Products> GetAllProducts();
 //         Product AddProducts(Products products);
-//         Product GetProducts(Products products);
-//         Product DeleteProducts(Products products);
+        List<Products> GetAllProducts();
+        // Product DeleteProducts(Products products);
 
         }
     }

@@ -1,13 +1,20 @@
+using System; 
+using System.Collections.Generic; 
+using PPDL;
+using PPModels;
+using Entity = PPDL.Entities;
+
 namespace PPBL
 {
-    public class ProductBL
+    public class ProductBL : IProductBL
     {
-    //     private IRepository _repo;
+        private IRepository _repo;
 
-    // public ProductBL(IRepository repo)
-    // {
-    //     _repo = repo;
-    // }
+    public ProductBL(IRepository repo)
+    {
+        _repo = repo;
+    }
+
 
     // public Products AddProduct(Products products)
     // {
@@ -18,9 +25,19 @@ namespace PPBL
     //     return _repo.AddProduct(products);
     // }
 
-    // public Products GetProducts(Products products)
+    public List<Products> GetAllProducts()
+    {
+        return _repo.GetAllProducts();
+    }
+
+    // public Products DeleteProducts (Products products)
     // {
-    //     return _repo.GetProducts(products);
+    //     if(_repo.DeleteProduct(products))
+    //     {
+            
+    //     }
     // }
+
     }
 }
+

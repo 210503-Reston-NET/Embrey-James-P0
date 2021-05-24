@@ -7,13 +7,18 @@ using Entity = PortablePdbBuilder.Entities;
 using Xunit;
 using Microsoft.EntityFramework;
 using System.Collections.Generic;
-ussing PPDL;
+using PPDL;
 
 
 namespace PPTests
 {
     public class RepoTest
     {
+        // [Fact]
+        // public void PassingAddTest()
+        // {
+        //     Assert.Equal({names} = "James");
+        // } 
         private readonly DBContextOptions<Entity.PPDBContext> options;
         //XUnit creates new instances of test classes, you need to make sure that you seed your db for each class
 

@@ -26,7 +26,7 @@ namespace PPUI
                         submenu.Start();
                         break;
                     case "1":
-                        submenu = Intro.GetMenu("ManagerMenu");
+                        submenu = Intro.GetMenu("InventoryMenu");
                         submenu.Start();
                         break;
                     case "2":

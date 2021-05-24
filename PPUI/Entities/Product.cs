@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace PPDL.Entities
+namespace PPUI.Entities
 {
     public partial class Product
     {

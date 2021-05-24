@@ -5,7 +5,6 @@ using Entity = PPDL.Entities;
 using System.Linq;
 
 
-
 namespace PPDL
 {
     public class RepoDB : IRepository
@@ -15,6 +14,14 @@ namespace PPDL
         public RepoDB(Entity.PPDBContext context) 
         {
             _context = context;
+        }
+
+        public List<Model.Location> GetAllLocations()
+        {
+            return _context.Locations
+            .Select(
+                location => new Model.Location(location.LocationName, location.LocationCity, location.LocationState)
+            ).ToList();
         }
         
         public Model.Customers AddCustomer(Model.Customers customers)
@@ -28,6 +35,14 @@ namespace PPDL
             );
             _context.SaveChanges();
             return customers;
+        }
+
+        public List<Model.Products> GetAllProducts()
+        {
+            return _context.Products
+            .Select(
+                product => new Model.Products(product.ProductName, product.ProductPrice)
+            ).ToList();
         }
         
 
@@ -99,6 +114,7 @@ namespace PPDL
                 OrderNumber= orders.OrderNumber,
                 OrderTotal = orders.OrderTotal,
                 OrderLocation = orders.OrderLocation,
+                OrderDate = DateTime.Now
                 }
             );
             _context.SaveChanges();
@@ -136,12 +152,94 @@ namespace PPDL
 
         }
 
-        public string GetOrdersL(Model.Orders orders)
+        
+
+        public void UpdateInventory(Model.Inventory inventory2BeUpdated)
         {
-            Entity.Order found = _context.Orders.FirstOrDefault(ord => ord.OrderId == orders.OrderId);
-            if(found == null);
-            return found.OrderLocation;
+            
+
+            Entity.Inventory oldInventory = _context.Inventories.Find(inventory2BeUpdated.InventoryId);
+
+            _context.Entry(oldInventory).CurrentValues.SetValues(inventory2BeUpdated);
+
+
+            Entity.Inventory oldInventory1 = _context.Inventories.Find(inventory2BeUpdated.InventoryId);
+
+
+            oldInventory1.InventoryQuantity = inventory2BeUpdated.InventoryQuantity;
+
+            // oldInventory1.InventoryQuantity = inventory2BeUpdated.InventoryTotal;
+
+            _context.Entry(oldInventory).CurrentValues.SetValues((inventory2BeUpdated));
+
+
+            _context.SaveChanges();
+
+        //     // _context.ChangeTracker.Clear();
+
         }
+
+        public Model.Inventory GetInventory(int prod, int loc)
+        {
+            Entity.Inventory found = _context.Inventories.FirstOrDefault(inv => inv.InventoryNumber == prod && inv.InventoryCode == loc);
+            if(found == null) return null;
+            return new Model.Inventory(found.InventoryId, found.InventoryNumber, found.InventoryQuantity, found.InventoryCode);
+
+        //     // _context.ChangeTracker.Clear();
+
+        }
+
+        public void DecrementInventory(Model.Inventory inventory2BeUpdated)
+        {
+            
+
+            Entity.Inventory oldInventory = _context.Inventories.Find(inventory2BeUpdated.InventoryId);
+            
+            // Console.WriteLine(oldInventory.ToString());
+            // Console.WriteLine(oldInventory.ToString());
+
+            // _context.Entry(oldInventory).CurrentValues.SetValues(inventory2BeUpdated);
+            
+            
+            
+
+
+            // Entity.Inventory oldInventory1 = _context.Inventories.Find(inventory2BeUpdated.InventoryId);
+            
+
+            oldInventory.InventoryQuantity = inventory2BeUpdated.InventoryQuantity - 1;
+            
+
+            // oldInventory1.InventoryQuantity = inventory2BeUpdated.InventoryTotal;
+
+            // _context.Entry(oldInventory).CurrentValues.SetValues((inventory2BeUpdated));
+            
+
+            _context.SaveChanges();
+
+        //     // _context.ChangeTracker.Clear();
+
+        }
+
+        public int GetLocation(string location)
+        {
+            Entity.Location found = _context.Locations.FirstOrDefault(loc => loc.LocationState == location);
+            if(found == null)
+            Console.WriteLine("Could not find location!");
+            return found.LocationId;
+        }
+
+        // public string GetOrdersL(Model.Orders orders)
+        // {
+        //     Entity.Order found = _context.Orders.FirstOrDefault(ord => ord.OrderId == orders.OrderId);
+        //     if(found == null);
+        //     return found.OrderLocation;
+        // }
+
+        // public int DeleteProduct(Model.Products products)
+        // {
+
+        // }
 
 
     // {
